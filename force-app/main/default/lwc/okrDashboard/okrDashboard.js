@@ -8,6 +8,11 @@ export default class OkrDashboard extends LightningElement {
 
     showObjectiveForm = false;
     showKeyResultForm = false;
+    showSurveyForm = false;
+    showReviewForm = false;
+    showGoogleReviewForm = false;
+    showCaseStudyForm = false;
+
     objectives = [];
     isLoading = true;
 
@@ -75,16 +80,46 @@ export default class OkrDashboard extends LightningElement {
     }
 
     handleNewObjective() {
+        this.closeAllForms();
         this.showObjectiveForm = true;
     }
 
     handleNewKeyResult() {
+        this.closeAllForms();
         this.showKeyResultForm = true;
     }
 
+    handleNewSurvey() {
+        this.closeAllForms();
+        this.showSurveyForm = true;
+    }
+
+    handleNewReview() {
+        this.closeAllForms();
+        this.showReviewForm = true;
+    }
+
+    handleNewGoogleReview() {
+        this.closeAllForms();
+        this.showGoogleReviewForm = true;
+    }
+
+    handleNewCaseStudy() {
+        this.closeAllForms();
+        this.showCaseStudyForm = true;
+    }
+
     handleCancel() {
+        this.closeAllForms();
+    }
+
+    closeAllForms() {
         this.showObjectiveForm = false;
         this.showKeyResultForm = false;
+        this.showSurveyForm = false;
+        this.showReviewForm = false;
+        this.showGoogleReviewForm = false;
+        this.showCaseStudyForm = false;
     }
 
     handleObjectiveSuccess() {
@@ -113,7 +148,61 @@ export default class OkrDashboard extends LightningElement {
         window.location.reload();
     }
 
-    handleError() {
+    handleSurveySuccess() {
+
+        this.showSurveyForm = false;
+
+        this.showToast(
+            'Success',
+            'Survey created successfully.',
+            'success'
+        );
+
+        window.location.reload();
+    }
+
+    handleReviewSuccess() {
+
+        this.showReviewForm = false;
+
+        this.showToast(
+            'Success',
+            'Review created successfully.',
+            'success'
+        );
+
+        window.location.reload();
+    }
+
+    handleGoogleReviewSuccess() {
+
+        this.showGoogleReviewForm = false;
+
+        this.showToast(
+            'Success',
+            'Google Review created successfully.',
+            'success'
+        );
+
+        window.location.reload();
+    }
+
+    handleCaseStudySuccess() {
+
+        this.showCaseStudyForm = false;
+
+        this.showToast(
+            'Success',
+            'Case Study created successfully.',
+            'success'
+        );
+
+        window.location.reload();
+    }
+
+    handleError(event) {
+
+        console.error('Error saving record:', event.detail);
 
         this.showToast(
             'Error',

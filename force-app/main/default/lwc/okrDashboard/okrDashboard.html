@@ -21,7 +21,33 @@
                     class="slds-m-left_small"
                     onclick={handleNewKeyResult}>
                 </lightning-button>
+                <lightning-button
+    label="New Survey"
+    variant="neutral"
+    class="slds-m-left_small"
+    onclick={handleNewSurvey}>
+</lightning-button>
 
+<lightning-button
+    label="New Review"
+    variant="neutral"
+    class="slds-m-left_small"
+    onclick={handleNewReview}>
+</lightning-button>
+
+<lightning-button
+    label="New Google Review"
+    variant="neutral"
+    class="slds-m-left_small"
+    onclick={handleNewGoogleReview}>
+</lightning-button>
+
+<lightning-button
+    label="New Case Study"
+    variant="neutral"
+    class="slds-m-left_small"
+    onclick={handleNewCaseStudy}>
+</lightning-button>
             </div>
 
             <template if:true={isLoading}>
@@ -301,5 +327,328 @@
         <div class="slds-backdrop slds-backdrop_open"></div>
 
     </template>
+<template if:true={showSurveyForm}>
 
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-modal="true"
+        class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <header class="slds-modal__header">
+
+                <h2 class="slds-text-heading_medium">
+                    New Survey
+                </h2>
+
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium">
+
+                <lightning-record-edit-form
+                    object-api-name="OKR_Survey__c"
+                    onsuccess={handleSurveySuccess}
+                    onerror={handleError}>
+
+                    <lightning-messages></lightning-messages>
+
+                    <lightning-input-field
+                        field-name="Name"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Key_Result__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Survey_Type__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Survey_Date__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Score__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Notes__c">
+                    </lightning-input-field>
+
+                    <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+
+                        <lightning-button
+                            label="Cancel"
+                            onclick={handleCancel}>
+                        </lightning-button>
+
+                        <lightning-button
+                            type="submit"
+                            label="Save"
+                            variant="brand"
+                            class="slds-m-left_small">
+                        </lightning-button>
+
+                    </div>
+
+                </lightning-record-edit-form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+<template if:true={showReviewForm}>
+
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-modal="true"
+        class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <header class="slds-modal__header">
+
+                <h2 class="slds-text-heading_medium">
+                    New Review
+                </h2>
+
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium">
+
+                <lightning-record-edit-form
+                    object-api-name="OKR_Review__c"
+                    onsuccess={handleReviewSuccess}
+                    onerror={handleError}>
+
+                    <lightning-messages></lightning-messages>
+
+                    <lightning-input-field
+                        field-name="Name"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Key_Result__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Review_Type__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Review_Dates__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Rating__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Comments__c">
+                    </lightning-input-field>
+
+                    <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+
+                        <lightning-button
+                            label="Cancel"
+                            onclick={handleCancel}>
+                        </lightning-button>
+
+                        <lightning-button
+                            type="submit"
+                            label="Save"
+                            variant="brand"
+                            class="slds-m-left_small">
+                        </lightning-button>
+
+                    </div>
+
+                </lightning-record-edit-form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+<template if:true={showGoogleReviewForm}>
+
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-modal="true"
+        class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <header class="slds-modal__header">
+
+                <h2 class="slds-text-heading_medium">
+                    New Google Review
+                </h2>
+
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium">
+
+                <lightning-record-edit-form
+                    object-api-name="OKR_Google_Review__c"
+                    onsuccess={handleGoogleReviewSuccess}
+                    onerror={handleError}>
+
+                    <lightning-messages></lightning-messages>
+
+                    <lightning-input-field
+                        field-name="Name"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Key_Result__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Google_Rating__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Review_Date__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Reviewer_Name__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Comments__c">
+                    </lightning-input-field>
+
+                    <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+
+                        <lightning-button
+                            label="Cancel"
+                            onclick={handleCancel}>
+                        </lightning-button>
+
+                        <lightning-button
+                            type="submit"
+                            label="Save"
+                            variant="brand"
+                            class="slds-m-left_small">
+                        </lightning-button>
+
+                    </div>
+
+                </lightning-record-edit-form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
+<template if:true={showCaseStudyForm}>
+
+    <section
+        role="dialog"
+        tabindex="-1"
+        aria-modal="true"
+        class="slds-modal slds-fade-in-open">
+
+        <div class="slds-modal__container">
+
+            <header class="slds-modal__header">
+
+                <h2 class="slds-text-heading_medium">
+                    New Case Study
+                </h2>
+
+            </header>
+
+            <div class="slds-modal__content slds-p-around_medium">
+
+                <lightning-record-edit-form
+                    object-api-name="OKR_Case_Study__c"
+                    onsuccess={handleCaseStudySuccess}
+                    onerror={handleError}>
+
+                    <lightning-messages></lightning-messages>
+
+                    <lightning-input-field
+                        field-name="Name"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Key_Result__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Case_Study_Date__c"
+                        required>
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Customer_Name__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Industry__c">
+                    </lightning-input-field>
+
+                    <lightning-input-field
+                        field-name="Description__c">
+                    </lightning-input-field>
+
+                    <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+
+                        <lightning-button
+                            label="Cancel"
+                            onclick={handleCancel}>
+                        </lightning-button>
+
+                        <lightning-button
+                            type="submit"
+                            label="Save"
+                            variant="brand"
+                            class="slds-m-left_small">
+                        </lightning-button>
+
+                    </div>
+
+                </lightning-record-edit-form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</template>
 </template>
